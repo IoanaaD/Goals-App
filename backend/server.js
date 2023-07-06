@@ -1,11 +1,15 @@
 const express = require("express");
 const dotenv = require("dotenv").config();
 const { errorHandler } = require("./middleware/errorMiddleware");
+const connectDB = require("./config/db");
 const port = process.env.PORT || 5000;
+
+connectDB();
 
 const app = express();
 
 //body parser middleware
+//in order to be able to access req.body
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
