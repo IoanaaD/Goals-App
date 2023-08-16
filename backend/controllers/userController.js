@@ -74,13 +74,7 @@ const loginUser = asyncHandler(async (req, res) => {
 //@access Private
 //to test in postman, in the authorization part, choose bearer token and put there the token got after login with an user
 const getMe = asyncHandler(async (req, res) => {
-  const { _id, name, email } = await User.findById(req.user.id);
-
-  res.status(200).json({
-    id: _id,
-    name,
-    email,
-  });
+  res.status(200).json(req.user);
 });
 
 //Generate JWT
